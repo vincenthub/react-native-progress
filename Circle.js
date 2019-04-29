@@ -149,6 +149,19 @@ export class ProgressCircle extends Component {
           ) : (
             false
           )}
+          {border ? (
+            <Arc
+              radius={radius}
+              offset={offset}
+              startAngle={0}
+              endAngle={(indeterminate ? endAngle * 2 : 2) * Math.PI}
+              stroke={'#f1f3f6'}
+              strokeCap={strokeCap}
+              strokeWidth={border}
+            />
+          ) : (
+            false
+          )}
           {!indeterminate ? (
             <Shape
               fill={fill}
@@ -160,18 +173,6 @@ export class ProgressCircle extends Component {
               stroke={color}
               strokeCap={strokeCap}
               strokeWidth={thickness}
-            />
-          ) : (
-            false
-          )}
-          {border ? (
-            <Arc
-              radius={size / 2}
-              startAngle={0}
-              endAngle={(indeterminate ? endAngle * 2 : 2) * Math.PI}
-              stroke={borderColor || color}
-              strokeCap={strokeCap}
-              strokeWidth={border}
             />
           ) : (
             false
@@ -190,7 +191,7 @@ export class ProgressCircle extends Component {
               justifyContent: 'center',
             }}
           >
-            <Text
+            {/* <Text
               style={[
                 {
                   color,
@@ -202,12 +203,12 @@ export class ProgressCircle extends Component {
               allowFontScaling={allowFontScaling}
             >
               {formatText(progressValue)}
-            </Text>
+            </Text> */}
+            {children}
           </View>
         ) : (
           false
         )}
-        {children}
       </View>
     );
   }
