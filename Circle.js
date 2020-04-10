@@ -1,6 +1,5 @@
 import { Surface as ARTSurface } from '@react-native-community/art';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
 import { Animated, StyleSheet, View } from 'react-native';
 import Arc from './Shapes/Arc';
 import withAnimation from './withAnimation';
@@ -48,7 +47,7 @@ export class ProgressCircle extends Component {
     borderWidth: 1,
     color: 'rgba(0, 122, 255, 1)',
     direction: 'clockwise',
-    formatText: (progress) => `${Math.round(progress * 100)}%`,
+    formatText: progress => `${Math.round(progress * 100)}%`,
     progress: 0,
     showsText: false,
     size: 40,
@@ -65,7 +64,7 @@ export class ProgressCircle extends Component {
 
   componentDidMount() {
     if (this.props.animated) {
-      this.props.progress.addListener((event) => {
+      this.props.progress.addListener(event => {
         this.progressValue = event.value;
         if (this.props.showsText || this.progressValue === 1) {
           this.forceUpdate();

@@ -3,7 +3,6 @@ import {
   Shape as ARTShape,
 } from '@react-native-community/art';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
 
 const CIRCLE = Math.PI * 2;
 
@@ -24,12 +23,10 @@ function makeSectorPath(x, y, angle, radius) {
   const centerY = y + radius;
 
   return `M${centerX} ${centerY}
-          L${centerX + Math.cos(startAngle) * radius} ${
-    centerY - Math.sin(startAngle) * radius
-  }
-          A${radius} ${radius} 0 ${arcFlag} 0 ${
-    centerX + Math.cos(endAngle) * radius
-  } ${centerY - Math.sin(endAngle) * radius}
+          L${centerX + Math.cos(startAngle) * radius} ${centerY -
+    Math.sin(startAngle) * radius}
+          A${radius} ${radius} 0 ${arcFlag} 0 ${centerX +
+    Math.cos(endAngle) * radius} ${centerY - Math.sin(endAngle) * radius}
           L${centerX} ${centerY}`;
 }
 
