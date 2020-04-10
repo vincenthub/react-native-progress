@@ -1,5 +1,6 @@
 import { Surface as ARTSurface } from '@react-native-community/art';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { Animated, StyleSheet, View } from 'react-native';
 import Arc from './Shapes/Arc';
 import withAnimation from './withAnimation';
