@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import { Surface as ARTSurface } from '@react-native-community/art';
 import PropTypes from 'prop-types';
-import { Animated, ART, StyleSheet, View } from 'react-native';
-
+import React, { Component } from 'react';
+import { Animated, StyleSheet, View } from 'react-native';
 import Circle from './Shapes/Circle';
 import Sector from './Shapes/Sector';
 import withAnimation from './withAnimation';
 
 const CIRCLE = Math.PI * 2;
 
-const AnimatedSurface = Animated.createAnimatedComponent(ART.Surface);
+const AnimatedSurface = Animated.createAnimatedComponent(ARTSurface);
 const AnimatedSector = Animated.createAnimatedComponent(Sector);
 
 const styles = StyleSheet.create({
@@ -57,7 +57,7 @@ export class ProgressPie extends Component {
       ...restProps
     } = this.props;
 
-    const Surface = rotation ? AnimatedSurface : ART.Surface;
+    const Surface = rotation ? AnimatedSurface : ARTSurface;
     const Shape = animated ? AnimatedSector : Sector;
 
     const angle = animated

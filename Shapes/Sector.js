@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
+import {
+  Path as ARTPath,
+  Shape as ARTShape,
+} from '@react-native-community/art';
 import PropTypes from 'prop-types';
-import { ART } from 'react-native';
+import React, { Component } from 'react';
 
 const CIRCLE = Math.PI * 2;
 
 function makeSectorPath(x, y, angle, radius) {
   if (angle >= CIRCLE) {
-    return ART.Path()
+    return new ARTPath()
       .moveTo(x, y)
       .move(radius, 0)
       .arc(0, radius * 2, radius, radius)
@@ -21,10 +24,12 @@ function makeSectorPath(x, y, angle, radius) {
   const centerY = y + radius;
 
   return `M${centerX} ${centerY}
-          L${centerX + Math.cos(startAngle) * radius} ${centerY -
-    Math.sin(startAngle) * radius}
-          A${radius} ${radius} 0 ${arcFlag} 0 ${centerX +
-    Math.cos(endAngle) * radius} ${centerY - Math.sin(endAngle) * radius}
+          L${centerX + Math.cos(startAngle) * radius} ${
+    centerY - Math.sin(startAngle) * radius
+  }
+          A${radius} ${radius} 0 ${arcFlag} 0 ${
+    centerX + Math.cos(endAngle) * radius
+  } ${centerY - Math.sin(endAngle) * radius}
           L${centerX} ${centerY}`;
 }
 
@@ -50,6 +55,6 @@ export default class Sector extends Component {
       angle,
       radius
     );
-    return <ART.Shape d={path} {...restProps} />;
+    return <ARTShape d={path} {...restProps} />;
   }
 }

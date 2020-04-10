@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import { Surface as ARTSurface } from '@react-native-community/art';
 import PropTypes from 'prop-types';
-import { Animated, ART, StyleSheet, Text, View } from 'react-native';
-
+import React, { Component } from 'react';
+import { Animated, StyleSheet, View } from 'react-native';
 import Arc from './Shapes/Arc';
 import withAnimation from './withAnimation';
 
 const CIRCLE = Math.PI * 2;
 
-const AnimatedSurface = Animated.createAnimatedComponent(ART.Surface);
+const AnimatedSurface = Animated.createAnimatedComponent(ARTSurface);
 const AnimatedArc = Animated.createAnimatedComponent(Arc);
 
 const styles = StyleSheet.create({
@@ -48,7 +48,7 @@ export class ProgressCircle extends Component {
     borderWidth: 1,
     color: 'rgba(0, 122, 255, 1)',
     direction: 'clockwise',
-    formatText: progress => `${Math.round(progress * 100)}%`,
+    formatText: (progress) => `${Math.round(progress * 100)}%`,
     progress: 0,
     showsText: false,
     size: 40,
@@ -63,9 +63,9 @@ export class ProgressCircle extends Component {
     this.progressValue = 0;
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.animated) {
-      this.props.progress.addListener(event => {
+      this.props.progress.addListener((event) => {
         this.progressValue = event.value;
         if (this.props.showsText || this.progressValue === 1) {
           this.forceUpdate();
@@ -109,7 +109,7 @@ export class ProgressCircle extends Component {
     const textOffset = border + thickness;
     const textSize = size - textOffset * 2;
 
-    const Surface = rotation ? AnimatedSurface : ART.Surface;
+    const Surface = rotation ? AnimatedSurface : ARTSurface;
     const Shape = animated ? AnimatedArc : Arc;
     const progressValue = animated ? this.progressValue : progress;
     const angle = animated
@@ -149,19 +149,6 @@ export class ProgressCircle extends Component {
           ) : (
             false
           )}
-          {border ? (
-            <Arc
-              radius={radius}
-              offset={offset}
-              startAngle={0}
-              endAngle={(indeterminate ? endAngle * 2 : 2) * Math.PI}
-              stroke={'#f1f3f6'}
-              strokeCap={strokeCap}
-              strokeWidth={border}
-            />
-          ) : (
-            false
-          )}
           {!indeterminate ? (
             <Shape
               fill={fill}
@@ -173,6 +160,19 @@ export class ProgressCircle extends Component {
               stroke={color}
               strokeCap={strokeCap}
               strokeWidth={thickness}
+            />
+          ) : (
+            false
+          )}
+          {border ? (
+            <Arc
+              radius={radius}
+              offset={offset}
+              startAngle={0}
+              endAngle={(indeterminate ? endAngle * 2 : 2) * Math.PI}
+              stroke={'#f1f3f6'}
+              strokeCap={strokeCap}
+              strokeWidth={border}
             />
           ) : (
             false
@@ -204,11 +204,11 @@ export class ProgressCircle extends Component {
             >
               {formatText(progressValue)}
             </Text> */}
-            {children}
           </View>
         ) : (
           false
         )}
+        {children}
       </View>
     );
   }
