@@ -204,7 +204,7 @@ export class ProgressCircle extends Component {
             >
               {formatText(progressValue)}
             </Text> */}
-          </View>
+          </View> 
         ) : (
           false
         )}

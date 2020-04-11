@@ -1,13 +1,7 @@
-import { Surface as ARTSurface } from '@react-native-community/art';
 import PropTypes from 'prop-types';
-<<<<<<< HEAD
-import React, { Component } from 'react';
-import { Animated, Easing } from 'react-native';
-=======
 import { Animated, Easing } from 'react-native';
 import { Surface as ARTSurface } from '@react-native-community/art';
 
->>>>>>> 835a487607ff5780d910ba582c777f13ca696ced
 import Arc from './Shapes/Arc';
 
 const AnimatedArc = Animated.createAnimatedComponent(Arc);
