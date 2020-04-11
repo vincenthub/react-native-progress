@@ -1,7 +1,6 @@
+import { Surface as ARTSurface } from '@react-native-community/art';
 import PropTypes from 'prop-types';
 import { Animated, Easing } from 'react-native';
-import { Surface as ARTSurface } from '@react-native-community/art';
-
 import Arc from './Shapes/Arc';
 
 const AnimatedArc = Animated.createAnimatedComponent(Arc);
@@ -84,7 +83,7 @@ export default class CircleSnail extends Component {
         easing: Easing.inOut(Easing.quad),
         useNativeDriver: this.props.useNativeDriver,
       }),
-    ]).start((endState) => {
+    ]).start(endState => {
       if (endState.finished) {
         if (Array.isArray(this.props.color)) {
           this.setState({
