@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Animated, Easing, View, I18nManager } from 'react-native';
+import { Animated, Easing, I18nManager, View } from 'react-native';
 
 const INDETERMINATE_WIDTH_FACTOR = 0.3;
 const BAR_WIDTH_ZERO_POSITION =
@@ -91,7 +91,7 @@ export default class ProgressBar extends Component {
     }
   }
 
-  handleLayout = (event) => {
+  handleLayout = event => {
     if (!this.props.width) {
       this.setState({ width: event.nativeEvent.layout.width });
     }
@@ -108,7 +108,7 @@ export default class ProgressBar extends Component {
       easing: Easing.linear,
       isInteraction: false,
       useNativeDriver: this.props.useNativeDriver,
-    }).start((endState) => {
+    }).start(endState => {
       if (endState.finished) {
         this.animate();
       }
